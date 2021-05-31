@@ -31,7 +31,7 @@ commands:
           sudo curl -LO https://github.com/kubernetes/kops/releases/download/v1.18.0/kops-linux-amd64
           sudo chmod +x kops-linux-amd64
           sudo mv kops-linux-amd64 /usr/local/bin/kops
-          kops export kubecfg rmit.k8s.local --state s3://rmit-kops-state-<<update-me>>
+          kops export kubecfg rmit.k8s.local --state s3://rmit-kops-state-ldbvlt
 
   smoke-test:
     parameters:
@@ -106,8 +106,7 @@ jobs:
             sudo curl -LO https://github.com/kubernetes/kops/releases/download/v1.18.0/kops-linux-amd64
             sudo chmod +x kops-linux-amd64
             sudo mv kops-linux-amd64 /usr/local/bin/kops
-            kops export kubecfg rmit.k8s.local --state s3://rmit-kops-state-<<update-me>>
-
+            kops export kubecfg rmit.k8s.local --state s3://rmit-kops-state-ldbvlt
             apt-get install jq -y
 
       - run:
@@ -128,8 +127,8 @@ jobs:
   package:
     machine: true
     environment:
-      ECR: <update-me>
-      reponame: <update-me>
+      ECR: 682325028273.dkr.ecr.us-east-1.amazonaws.com
+      reponame: ldbvlt
     steps:
       - checkout
 

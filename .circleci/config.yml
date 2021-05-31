@@ -128,7 +128,7 @@ jobs:
     machine: true
     environment:
       ECR: 682325028273.dkr.ecr.us-east-1.amazonaws.com
-      reponame: ldbvlt
+      reponame: rmit-assignment3-container-repo
     steps:
       - checkout
 

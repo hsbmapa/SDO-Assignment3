@@ -173,6 +173,38 @@ jobs:
           paths:
             - artifacts
 
+  deploy-test:
+    docker:
+      - image: cimg/base:2021.05
+    environment:
+      ENV: test
+    steps:
+      - attach_workspace:
+          at: ./
+      - setup-cd
+      - run:
+          name: deploy infra
+          command: |
+            cd artifacts/infra
+            make init
+            make up
+            terraform output > ../db_connection_string.txt
+            cat ../db_connection_string.txt
+      - run:
+          name: namespace test
+          command: |
+            kubectl create namespace test
+
+      - run:
+          name: deploy app
+          command: |
+             helm upgrade todo artifacts/todo-0.1.0.tgz -i -n test --wait --set image=$(cat artifacts/image.txt),dbhost=$(cat artifacts/db_connection_string.txt)
+
+      - run:
+          name: update database with db migrate
+          command: |
+            kubectl exec deployment/todo -n test -- env NODE_ENV=production node_modules/.bin/sequelize db:migrate
+
 workflows:
   version: 2
   build-test-package:
@@ -181,6 +213,9 @@ workflows:
       - integration-test:
           requires: 
             - build
+      - deploy-test:
+          requires:
+            - package
       - package:
           requires:
             - integration-test

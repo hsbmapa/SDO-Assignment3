@@ -31,7 +31,7 @@ commands:
           sudo curl -LO https://github.com/kubernetes/kops/releases/download/v1.18.0/kops-linux-amd64
           sudo chmod +x kops-linux-amd64
           sudo mv kops-linux-amd64 /usr/local/bin/kops
-          kops export kubecfg rmit.k8s.local --state s3://rmit-kops-state-ldbvlt
+          kops export kubecfg rmit.k8s.local --state s3://rmit-kops-state-c4509u
 
   smoke-test:
     parameters:
@@ -106,7 +106,7 @@ jobs:
             sudo curl -LO https://github.com/kubernetes/kops/releases/download/v1.18.0/kops-linux-amd64
             sudo chmod +x kops-linux-amd64
             sudo mv kops-linux-amd64 /usr/local/bin/kops
-            kops export kubecfg rmit.k8s.local --state s3://rmit-kops-state-ldbvlt
+            kops export kubecfg rmit.k8s.local --state s3://rmit-kops-state-c4509u
             apt-get install jq -y
 
       - run:
@@ -199,11 +199,6 @@ jobs:
           name: deploy app
           command: |
             helm upgrade todo artifacts/todo-0.1.0.tgz -i -n test --wait --set image=$(cat artifacts/image.txt),dbhost=$(cat artifacts/db_connection_string.txt)
-
-      - run:
-          name: update database with db migrate
-          command: |
-            kubectl exec deployment/todo -n test -- env NODE_ENV=production node_modules/.bin/sequelize db:migrate
 
 workflows:
   version: 2

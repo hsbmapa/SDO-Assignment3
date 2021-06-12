@@ -1,4 +1,4 @@
-replicacount: 3
+replicacount: 1
 image: 682325028273.dkr.ecr.us-east-1.amazonaws.com/rmit-assignment3-container-repo:b6360f87a199b49f5eaf567932db3a4e5239fad3
 dbhost: localhost
 dbusername: s3661741

@@ -201,9 +201,10 @@ jobs:
   seed-db-test:
     docker:
       - image: cimg/base:2021.05
-    environment:
-      type: string
-      default: test
+    parameters:
+      environment:
+        type: string
+        default: "test"
     steps:
       - attach_workspace:
           at: ./

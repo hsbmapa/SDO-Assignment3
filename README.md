@@ -53,7 +53,12 @@ make kube-config
 
 ### Helm Chart
 * Helm Charts are used to combine the Kubernetes YAML manifests into a singular package which can then be deployed into our Kubernetes clusters
-* 
+
+### Deploying non-production environment
+* A non-production environment typically means that the application development and staging is not used for production purposes. So the application and constantly be previewed in a non-live fashion to developers to help with testing. It's not made for customers/consumers
+* In the config.yml file, I made a new command to deploy the the test (non-production environment). It's creating it in its own test environment so we can have multiple running at the same time. Essentially one for testing, and another for production
+
+### Deploying Production Environment
 
 ## Screenshots
 ### Deployment of non-production (test) environment
@@ -62,8 +67,20 @@ make kube-config
 ### Deployment of production (prod) environment
 ![todo-prod](https://i.imgur.com/omGLGGK.png)
 
-### Production on hold (requiring approval)
+### Smoke tests
+* Test
+![smoke-test](https://i.imgur.com/8F3ksv8.png)
 
+* Prod
+![smoke-prod]()
+
+### Kubernetes Namespace
+![namespace](https://i.imgur.com/9m5OlRV.png)
+
+### Production on hold (requiring approval)
+![approval](https://i.imgur.com/PxA64MY.png)
+![approval2](https://i.imgur.com/CaJyMoQ.png)
+![approval3](https://i.imgur.com/PzYaPXs.png)
 
 ### logging and monitoring with cloudwatch
 ![logging](https://i.imgur.com/zxKXlfg.png)

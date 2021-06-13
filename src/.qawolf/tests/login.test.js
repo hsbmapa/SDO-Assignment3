@@ -5,7 +5,11 @@ describe('login', () => {
   let browser;
 
   beforeAll(async () => {
-    browser = await launch({ url: process.env.ENDPOINT || "http://localhost:5000/" });
+    try {
+      browser = await launch({ url: process.env.ENDPOINT || "http://localhost:3000/" });
+    }catch(err) {
+      console.error(err);
+    }
   });
 
   afterAll(() => browser.close());

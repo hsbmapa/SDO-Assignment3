@@ -106,8 +106,7 @@ jobs:
   e2e:
     docker:
       - image: qawolf/qawolf:v0.9.2
-      - image: circleci/node:lts-browsers
-      - image: circleci/node:lts
+      - image: cimg/base:2020.01
     environment:
       QAW_HEADLESS: true
 

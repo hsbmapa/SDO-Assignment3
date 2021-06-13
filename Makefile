@@ -34,9 +34,10 @@ kube-config:
 #######
 
 namespace-up:
-
+	kubectl create namespace test && kubectl create namespace prod
 
 namespace-down:
+	kubectl delete namespace test && kubectl delete namespace prod
 
 ########
 # SSH

@@ -1,3 +1,77 @@
+# Assignment 1 DevOps
+Name: Heshan Mapa
+
+Student Number: s3661741
+
+## Stonk Inc
+Stonk Inc currently faces an issue:
+1. Wanting to start Kubernetes to be able to host their application
+
+Continuing to help them as their DevOps Practitioner, I will help them with:
+1. Setting up a Kubernetes to host their application
+2. Expand on the CI build to automatically deploy the Kubernetes cluster
+3. Using SaaS tools to reduce the learning curve for their own Development team.
+
+## Dependencies
+### Terraform
+* Need to download and install terraform for linux through their website located at https://www.terraform.io/downloads.html
+* Follow their simple install instructions to correctly install Terraform
+* Validating Terraform in a terminal shell `terraform --version`
+
+### Github
+* As this project is on github, installing git and being able to clone the project to be able to configure to the company's needs.
+
+### CircleCi
+* We are using CircleCi for their Continuous Integration Building
+* Being able to connect directly with the github repo, being able to build and test the application after every push.
+* Access to the pipeline can be found when logging in to the developer's account at https://circleci.com
+
+## Step-by-Step Solution
+### Setting up a private repo in GitHub
+First, we need to make another private repository on GitHub where we will work on the project. We will be ensuring we are using proper branching by using the GitHub Flow method, where all the new features we will be adding will be added and developed on feature branches and then merged into the main branch through the usage of Pull Requests which can then be later reviewed by the DevOp Practitioner (this case being me).
+![github repo](https://i.imgur.com/AtnxFO6.png)
+
+### Continuous Integration Building
+We then have to set up intergration between CircleCi and the GitHub repo as we have done previously.
+![circleci](https://i.imgur.com/NwJOSgU.png)
+
+### Deployment Instructions
+* Access the makefile in the root folder, and initiate the following commands.
+`make bootstrap`
+* Navigate to the .circleci folder and go through the CI config.yaml and update the bucket details
+* Navigate to the infra folder, in the makefile update the bucket details.
+* Deploy the kubernetes cluster using KOPS
+```
+make kube-create-cluster
+make kube-secret
+make kube-deploy-cluster
+make kube-config
+```
+* Validate that everything is running with the following command
+
+`kube-validate`
+
+### Helm Chart
+* Helm Charts are used to combine the Kubernetes YAML manifests into a singular package which can then be deployed into our Kubernetes clusters
+* 
+
+## Screenshots
+### Deployment of non-production (test) environment
+![todo-test](https://i.imgur.com/3DRjlN9.png)
+
+### Deployment of production (prod) environment
+![todo-prod](https://i.imgur.com/omGLGGK.png)
+
+### Production on hold (requiring approval)
+
+
+### logging and monitoring with cloudwatch
+![logging](https://i.imgur.com/zxKXlfg.png)
+
+### Screenshot of TODO app logs in CLoudWatch
+![cloudwatch](https://i.imgur.com/MIjKxUn.png)
+![cloudwatch2](https://i.imgur.com/w7JudC9.png)
+
 # Simple Todo App with MongoDB, Express.js and Node.js
 The ToDo app uses the following technologies and javascript libraries:
 * MongoDB

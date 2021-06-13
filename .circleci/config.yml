@@ -202,7 +202,7 @@ jobs:
     docker:
       - image: cimg/base:2021.05
     parameters:
-      envName:
+      environment:
         type: string
         default: "test"
     steps:
@@ -212,7 +212,7 @@ jobs:
       - run:
           name: update database
           command: |
-            kubectl exec deployment/todo -n << parameter.environment >> -- ./todo updatedb -s
+            kubectl exec deployment/todo -n << parameters.environment >> -- ./todo updatedb -s
 
 workflows:
   version: 2

@@ -248,9 +248,6 @@ workflows:
       - deploy-test:
           requires:
             - package
-      - smoke-test:
-          requires:
-            - deploy-test
       - deploy-prod:
           requires:
             - approval
@@ -258,9 +255,6 @@ workflows:
           type: approval
           requires:
           - deploy-test
-      - smoke-prod:
-            requires:
-              - deploy-prod
       - integration-test:
           requires: 
             - build

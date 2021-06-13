@@ -1,3 +1,4 @@
+
 up:
 	terraform apply --auto-approve -var environment=${ENV}
 

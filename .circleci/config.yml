@@ -198,7 +198,7 @@ jobs:
           command: |
              helm upgrade todo artifacts/todo-0.1.0.tgz -i -n test --wait --set image=$(cat artifacts/image.txt),dbhost=$(cat artifacts/dbendpoint.txt)
 
-    seed-db-test:
+  seed-db-test:
     docker:
       - image: cimg/base:2021.05
     parameters:

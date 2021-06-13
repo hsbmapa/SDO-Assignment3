@@ -212,7 +212,7 @@ jobs:
       - run:
           name: update database
           command: |
-            kubectl exec deployment/todo -n << parameters.environment >> -- ./Todo updatedb -s
+            kubectl exec deployment/todo -n << parameters.environment >> -- -ls
 
 workflows:
   version: 2

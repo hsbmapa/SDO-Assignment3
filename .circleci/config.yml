@@ -196,7 +196,7 @@ workflows:
       - build
       - deploy-test:
           requires:
-            - build
+            - package
       - integration-test:
           requires: 
             - build

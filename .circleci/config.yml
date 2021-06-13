@@ -202,7 +202,7 @@ jobs:
     docker:
       - image: cimg/base:2021.05
     parameters:
-      environment:
+      envName:
         type: string
         default: "test"
     steps:

@@ -249,6 +249,9 @@ workflows:
       - deploy-test:
           requires:
             - package
+      - e2e:
+          requires:
+            - deploy-test
       - deploy-prod:
           requires:
             - approval

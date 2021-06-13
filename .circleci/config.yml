@@ -50,6 +50,24 @@ commands:
               echo "Return Code was not 200, it was: ${returncode}"
               exit 1
             fi
+  
+  smoke-prod:
+    parameters:
+      envName: 
+        type: string
+        default: "prod"
+    steps:
+      - run:
+          name: Smoke prod
+          command: |
+            export endpoint=$(kubectl get service/todo-app -n << parameters.envName >> -o json | jq '.status.loadBalancer.ingress[0].hostname' | sed -e 's/^"//' -e 's/"$//')
+            echo $endpoint
+            export returncode=$(curl -s -o /dev/null -w "%{http_code}" ${endpoint})
+            if [ $returncode -ne "200" ]
+            then
+              echo "Return Code was not 200, it was: ${returncode}"
+              exit 1
+            fi
 
 jobs:
   build:
@@ -230,6 +248,9 @@ workflows:
       - deploy-test:
           requires:
             - package
+      - smoke-test:
+          requires:
+            - deploy-test
       - deploy-prod:
           requires:
             - approval
@@ -237,6 +258,9 @@ workflows:
           type: approval
           requires:
           - deploy-test
+      - smoke-prod:
+            requires:
+              - deploy-prod
       - integration-test:
           requires: 
             - build

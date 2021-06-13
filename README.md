@@ -59,6 +59,10 @@ make kube-config
 * In the config.yml file, I made a new command to deploy the the test (non-production environment). It's creating it in its own test environment so we can have multiple running at the same time. Essentially one for testing, and another for production
 
 ### Deploying Production Environment
+* A final production environment, after the testing of the non-production would be deployed under the prod environment for final consumers/customers. The application to be pushed out.
+
+### Stage Gate
+* A stage gate is used for authorisation of the production of the application. This way a leader of the application would have to review and authorise for the application to be pushed and deployed to production.
 
 ## Screenshots
 
@@ -93,6 +97,7 @@ make kube-config
 ![approval](https://i.imgur.com/PxA64MY.png)
 ![approval2](https://i.imgur.com/CaJyMoQ.png)
 ![approval3](https://i.imgur.com/PzYaPXs.png)
+![approval4](https://i.imgur.com/Ry1ZJfK.png)
 
 ### logging and monitoring with cloudwatch
 ![logging](https://i.imgur.com/zxKXlfg.png)

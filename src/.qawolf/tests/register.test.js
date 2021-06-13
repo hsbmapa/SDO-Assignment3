@@ -5,11 +5,7 @@ describe('register', () => {
   let browser;
 
   beforeAll(async () => {
-    try {
-      browser = await launch({ url: process.env.ENDPOINT || "http://localhost:3000/" });
-    }catch(err) {
-      console.error(err);
-    }
+    browser = await launch({ url: process.env.ENDPOINT || "http://localhost:5000/" });
   });
 
   afterAll(() => browser.close());

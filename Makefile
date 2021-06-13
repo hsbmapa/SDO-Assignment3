@@ -34,10 +34,14 @@ kube-config:
 #######
 
 namespace-up:
-	kubectl create namespace test && kubectl create namespace prod
+	kubectl create namespace test
+	kubectl create namespace prod
+	kubectl create namespace amazon-cloudwatch
 
 namespace-down:
-	kubectl delete namespace test && kubectl delete namespace prod
+	kubectl delete namespace test
+	kubectl delete namespace prod
+	kubectl delete namespace amazon-cloudwatch
 
 ########
 # SSH

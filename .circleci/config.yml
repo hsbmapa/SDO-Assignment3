@@ -208,10 +208,6 @@ jobs:
             make up
             terraform output db_endpoint > ../dbendpoint.txt
       - run:
-          name: namespace test
-          command: |
-            kubectl create namespace test
-      - run:
           name: deploy app
           command: |
              helm upgrade todo artifacts/todo-0.1.0.tgz -i -n test --wait --set image=$(cat artifacts/image.txt),dbhost=$(cat artifacts/dbendpoint.txt)
@@ -233,10 +229,6 @@ jobs:
             make init
             make up
             terraform output db_endpoint > ../dbendpoint.txt
-      - run:
-          name: namespace prod
-          command: |
-            kubectl create namespace prod
       - run:
           name: deploy app
           command: |

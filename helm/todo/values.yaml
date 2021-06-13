@@ -1,5 +1,5 @@
 replicacount: 3
-image: 682325028273.dkr.ecr.us-east-1.amazonaws.com/rmit-assignment3-container-repo:a060f5754f3d9033fbcfcd6286d71758808987e4
+image: 682325028273.dkr.ecr.us-east-1.amazonaws.com/rmit-assignment3-container-repo:7ed25d069828462359f238bf72b86c44748cf0ec
 dbhost: localhost
 dbusername: s3661741
 dbpass: s3661741P

@@ -61,6 +61,16 @@ make kube-config
 ### Deploying Production Environment
 
 ## Screenshots
+
+### Github
+* Commits
+
+![commits](https://i.imgur.com/A6poSZD.png)
+
+* branches
+
+![branch](https://i.imgur.com/vFxR92m.png)
+
 ### Deployment of non-production (test) environment
 ![todo-test](https://i.imgur.com/3DRjlN9.png)
 
@@ -69,9 +79,11 @@ make kube-config
 
 ### Smoke tests
 * Test
+
 ![smoke-test](https://i.imgur.com/8F3ksv8.png)
 
 * Prod
+
 ![smoke-prod]()
 
 ### Kubernetes Namespace
